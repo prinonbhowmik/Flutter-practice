@@ -68,7 +68,8 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: _incrementCounter,
             tooltip: 'Increment',
             child: Icon(Icons.add),
-          )),
+          )
+          ),
           new MaterialButton(
             child: new Text('Reset'),
             onPressed: _resetCounter,
