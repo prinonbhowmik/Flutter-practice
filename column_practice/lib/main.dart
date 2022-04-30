@@ -22,22 +22,36 @@ class MyDesignPage extends StatefulWidget {
   _MyDesignPage createState() => _MyDesignPage();
 }
 
+/*class DesignPage extends StatefulWidget{
+  const DesignPage({Key? key}) : super(key: key);
+
+  @override
+  _DesignPage createState() => _DesignPage();
+
+}*/
+
 class _MyDesignPage extends State<MyDesignPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          body: Row(
-        children: <Widget>[
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("  Call",style: (TextStyle(color: Colors.greenAccent)),),
+                  const Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Text('Call',
+                        style: (TextStyle(color: Colors.greenAccent))),
+                  ),
                   Container(
                       alignment: Alignment.center,
                       height: 50,
@@ -64,19 +78,26 @@ class _MyDesignPage extends State<MyDesignPage> {
                           ),
                         ],
                       ),
-                      child: Icon(Icons.call,color: Colors.greenAccent,)),
+                      child: Icon(
+                        Icons.call,
+                        color: Colors.greenAccent,
+                      )),
                 ],
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("Message",style: TextStyle(color: Colors.blueAccent)),
+                  const Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Text('Message',
+                        style: (TextStyle(color: Colors.blueAccent))),
+                  ),
                   Container(
                       alignment: Alignment.center,
                       height: 50,
                       width: 50,
-                      margin: EdgeInsets.only(
+                      margin: const EdgeInsets.only(
                           left: 25, top: 10, right: 25, bottom: 20),
                       // Neumorphic design
                       decoration: BoxDecoration(
@@ -98,14 +119,21 @@ class _MyDesignPage extends State<MyDesignPage> {
                           ),
                         ],
                       ),
-                      child: Icon(Icons.message_outlined,color: Colors.blueAccent,)),
+                      child: const Icon(
+                        Icons.message_outlined,
+                        color: Colors.blueAccent,
+                      )),
                 ],
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Text("  Mail",style:TextStyle(color: Colors.redAccent),),
+                  const Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Text('Mail',
+                        style: (TextStyle(color: Colors.redAccent))),
+                  ),
                   Container(
                       alignment: Alignment.center,
                       height: 50,
@@ -132,13 +160,27 @@ class _MyDesignPage extends State<MyDesignPage> {
                           ),
                         ],
                       ),
-                      child: Icon(Icons.mail_outline,color: Colors.redAccent,)),
+                      child: Icon(
+                        Icons.mail_outline,
+                        color: Colors.redAccent,
+                      )),
                 ],
               )
             ],
-          )
-        ],
-      )),
+          ),
+            ],
+          )),
     );
   }
 }
+
+/*class _DesignPage extends State<DesignPage> {
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+
+      ),
+    )
+  }
+}*/
