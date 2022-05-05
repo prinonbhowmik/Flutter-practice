@@ -29,7 +29,7 @@ class MyHomePage extends StatefulWidget {
 
 class HomePageState extends State<MyHomePage> {
   var _currentState = 0;
-  final pages = [One(),Two(),Three(),Four()];
+  final pages = [const One(),Two(),Three(),Four()];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
