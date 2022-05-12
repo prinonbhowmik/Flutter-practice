@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MyHomePage(),
     );
   }
@@ -27,7 +28,20 @@ class MyHomeState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Gradiant color"),
-      ),
+        flexibleSpace:Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                colors:[
+                  Colors.red,
+                  Colors.white60
+                ],
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft
+            ),
+          ),
+        ),
+      ) ,
+    
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
