@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_example/data.dart';
+import 'package:provider_example/receive.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
@@ -59,6 +60,11 @@ class HomePageDesign extends State<MyHomePage> {
                RaisedButton(
                  onPressed: (){providerData.Increment();},
                  child: const Text('Provider Example'),
+               ),
+               RaisedButton(
+                 onPressed: (){Navigator.push(context,MaterialPageRoute(builder: (context) => Receive()));
+                 },
+                 child: const Text('Change State'),
                )
              ],
            ),
