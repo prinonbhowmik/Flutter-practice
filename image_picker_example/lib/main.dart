@@ -25,15 +25,29 @@ class MyHomePage extends StatefulWidget {
 }
 
 class MyDesignPage extends State<MyHomePage> {
-  late File _image;
+  File? _image;
   Future CameraImage () async{
-    var image = await ImagePicker().pickImage(source: ImageSource.camera);
+    final image = await ImagePicker().pickImage(source: ImageSource.camera);
+
+    if(image == null) return;
+
+    final ImageTemp = File(image.path);
 
     setState(() {
-      _image = image as File;
+      _image = ImageTemp;
     });
   }
+  Future GalleryImage () async{
+    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
 
+    if(image == null) return;
+
+    final ImageTemp = File(image.path);
+
+    setState(() {
+      _image = ImageTemp;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -44,9 +58,7 @@ class MyDesignPage extends State<MyHomePage> {
                 flex: 2,
                   child: Container(
                     color: Colors.black12,
-                    height: double.maxFinite,
-                    width: double.maxFinite,
-                    child: _image==null?Text("No image selected"):Image.file(_image),
+                    child: _image==null?const Center(child: Text("No image selected")):Image.file(_image!),
                   )
               ),
               Expanded(
@@ -61,7 +73,7 @@ class MyDesignPage extends State<MyHomePage> {
                       ),
                       SizedBox(width: 20),
                       FloatingActionButton(
-                        onPressed: (){},
+                        onPressed: (){GalleryImage();},
                         child: Icon(Icons.photo),
                       ),
                     ],
