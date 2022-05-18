@@ -35,7 +35,9 @@ class _MyHomePageState extends State<MyHomePage> {
           onPressed: (){
             showDialog(context: context, builder: (context){
               return Dialog(
-                shape: RoundedRectangleBorder,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(20))
+                ),
                 child: Stack(
                   alignment: Alignment.topCenter,
                   overflow: Overflow.visible,
@@ -61,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         radius: 50,
                         child: ClipRRect(
                           borderRadius: BorderRadius.all(Radius.circular(50)),
-                            child: Image.network("https://w0.peakpx.com/wallpaper/784/935/HD-wallpaper-flutter-coding-dart-porgramming-thumbnail.jpg")
+                            child: Image.network("https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_500,q_auto:good,w_500/v1/gcs/platform-data-goog/events/download-5_4MSx5H2.png")
                         )
                         ,
                       ),
