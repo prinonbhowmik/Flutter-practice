@@ -43,7 +43,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           height: selected ? 100.0 : 200.0,
           color: selected ? Colors.red : Colors.blue,
           alignment:
-          selected ? Alignment.center : AlignmentDirectional.topCenter,
+          selected ? Alignment.center : AlignmentDirectional.center,
           duration: const Duration(seconds: 2),
           curve: Curves.fastOutSlowIn,
           child: const FlutterLogo(size: 75),
