@@ -28,7 +28,7 @@ class MyDesignPage extends State<MyStatefulWidget> {
   getDate() async{
     DateTime? date =await showDatePicker(
         context: context,
-        initialDate: DateTime.now(),
+        initialDate: DateTime.now()t,
         firstDate: DateTime(DateTime.now().year),
         lastDate: DateTime(DateTime.now().year+10));
 
