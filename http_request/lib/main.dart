@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart '  as http;
 
@@ -26,9 +27,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
+  var data;
   Future getData() async{
-    http.get("");
+    var response = await http.get(Uri.parse("https://jsonplaceholder.typicode.com/posts"));
+    print(response.body);
+
+    setState(() {
+      var decode  = json.decode(response.body);
+      data = decode;
+    });
+  }
+
+  @override
+  void initState() {
+   getData();
   }
 
   @override
@@ -39,17 +51,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
         title: Text("Http Request"),
       ),
-      body: Center(
-
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-
-          ],
-        ),
+      body: ListView.builder(
+        itemCount: data==null?0:data.length,
+        itemBuilder: ( context,  index) {
+          return ListTile(
+            title: Text(data[index]["title"]),
+            subtitle: Text(data[index]["body"]),
+            dense: true,
+          );
+        },
       ),
+      );
 
-    );
   }
 }
