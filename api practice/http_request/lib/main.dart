@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart '  as http;
+import 'dart:convert' as convert;
+import 'Model/User.dart';
 
 void main() {
   runApp( MyApp());
@@ -32,9 +34,17 @@ class _MyHomePageState extends State<MyHomePage> {
     var response = await http.get(Uri.parse("https://jsonplaceholder.typicode.com/posts"));
     print(response.body);
 
+    var jsonResponse = convert.jsonDecode(response.body);
+    List<User> users = [];
+
+    for (var i in jsonResponse) {
+      User user = User(i["title"], i["body"]);
+      users.add(user);
+    }
+
     setState(() {
-      var decode  = json.decode(response.body);
-      data = decode;
+
+      data = jsonResponse;
     });
   }
 
@@ -51,15 +61,26 @@ class _MyHomePageState extends State<MyHomePage> {
 
         title: Text("Http Request"),
       ),
-      body: ListView.builder(
-        itemCount: data==null?0:data.length,
-        itemBuilder: ( context,  index) {
-          return ListTile(
-            title: Text(data[index]["title"]),
-            subtitle: Text(data[index]["body"]),
-            dense: true,
-          );
-        },
+      body: FutureBuilder(
+        future: getData(),
+        builder: (BuildContext context, AsyncSnapshot snapshot){
+          if(snapshot == null){
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }else{
+            return ListView.builder(
+              itemCount: data==null?0:data.length,
+              itemBuilder: ( context,  index) {
+                return ListTile(
+                  title: Text(data[index]["title"]),
+                  subtitle: Text(data[index]["body"]),
+                  dense: true,
+                );
+              });
+          }
+        }
+
       ),
       );
 
